@@ -895,7 +895,7 @@ with tab3:
 
         # Compute costs for EOQ, LUC, LTC with lab parameters
         lab_params = dict(
-            gr=lab_gr, sr={}, bi=0, ss=0, lt=1,
+            gr=lab_gr, sr_dict={}, bi=0, ss=0, lt=1,
             S=lab_S, uc=lab_uc, hpct=lab_h/100, mult=1
         )
         lab_res = {t: compute_mrp(**lab_params, tech=t) for t in ["EOQ","LUC","LTC"]}
@@ -967,7 +967,7 @@ with tab3:
             np.random.seed(42)
             raw_v = np.random.normal(base_mean, std_v, 6)
             gr_v  = [max(5, int(round(v/5)*5)) for v in raw_v]
-        sweep_p = dict(gr=gr_v, sr={}, bi=0, ss=0, lt=1,
+        sweep_p = dict(gr=gr_v, sr_dict={}, bi=0, ss=0, lt=1,
                        S=250, uc=120, hpct=0.20, mult=1)
         rr = {t: compute_mrp(**sweep_p, tech=t) for t in ["EOQ","LUC","LTC"]}
         sweep_rows.append({
