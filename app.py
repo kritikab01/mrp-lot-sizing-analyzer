@@ -454,24 +454,37 @@ with st.sidebar:
 
     st.markdown("<hr style='border-color:#1e293b;margin:16px 0;'/>", unsafe_allow_html=True)
     st.markdown("""
-    <div style='line-height:2.0;'>
-      <div style='font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:0.2px;'>
-        Kritika Bhachawat
-      </div>
-      <div style='font-size:14px;font-weight:600;color:#7ecfff;margin-top:2px;'>
-        Roll No: 065087 &nbsp;·&nbsp; Group 76–90
-      </div>
-      <div style='font-size:13px;color:#94a3b8;margin-top:6px;'>
-        <b style='color:#cbd5e1;'>Course:</b> Operation and Supply Chain Management
-      </div>
-      <div style='font-size:13px;color:#94a3b8;margin-top:3px;'>
-        <b style='color:#cbd5e1;'>Focus:</b> EOQ outperforms LUC &amp; LTC
-      </div>
-      <div style='font-size:12px;color:#475569;margin-top:3px;'>
-        FORE School of Management
-      </div>
-    </div>
-    """, unsafe_allow_html=True)
+<div style='
+background:#020617;
+border:2px solid #38bdf8;
+border-radius:10px;
+padding:14px 16px;
+margin-top:10px;
+line-height:1.6;
+'>
+
+<div style='font-size:20px;font-weight:800;color:#ffffff;'>
+Kritika Bhachawat
+</div>
+
+<div style='font-size:16px;color:#facc15;font-weight:600;'>
+Roll No: 065087
+</div>
+
+<div style='font-size:15px;color:#38bdf8;font-weight:600;'>
+Course: Operation and Supply Chain Management
+</div>
+
+<div style='font-size:15px;color:#4ade80;font-weight:600;'>
+Focus: EOQ outperforms LUC & LTC
+</div>
+
+<div style='font-size:15px;color:#c084fc;font-weight:600;'>
+FORE School of Management
+</div>
+
+</div>
+""", unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════
 # COMPUTE ALL RESULTS
