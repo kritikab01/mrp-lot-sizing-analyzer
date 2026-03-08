@@ -454,10 +454,22 @@ with st.sidebar:
 
     st.markdown("<hr style='border-color:#1e293b;margin:16px 0;'/>", unsafe_allow_html=True)
     st.markdown("""
-    <div style='font-size:11px;color:#475569;line-height:1.7;'>
-      <b style='color:#94a3b8;'>Roll No. 87</b> · Group 76–90<br/>
-      <b style='color:#94a3b8;'>Focus:</b> EOQ outperforms LUC & LTC<br/>
-      <b style='color:#94a3b8;'>Course:</b> OSCM · FORE School of Management
+    <div style='line-height:2.0;'>
+      <div style='font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:0.2px;'>
+        Kritika Bhachawat
+      </div>
+      <div style='font-size:14px;font-weight:600;color:#7ecfff;margin-top:2px;'>
+        Roll No: 065087 &nbsp;·&nbsp; Group 76–90
+      </div>
+      <div style='font-size:13px;color:#94a3b8;margin-top:6px;'>
+        <b style='color:#cbd5e1;'>Course:</b> Operation and Supply Chain Management
+      </div>
+      <div style='font-size:13px;color:#94a3b8;margin-top:3px;'>
+        <b style='color:#cbd5e1;'>Focus:</b> EOQ outperforms LUC &amp; LTC
+      </div>
+      <div style='font-size:12px;color:#475569;margin-top:3px;'>
+        FORE School of Management
+      </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -790,7 +802,7 @@ with tab3:
     st.markdown("""
     <div class='hero' style='background:linear-gradient(135deg,#1e3a1e 0%,#14532d 60%,#166534 100%);'>
       <h1>🔬 EOQ Outperformance Lab</h1>
-      <p>Roll No. 87 · Group 76–90 — Focus: Conditions where EOQ beats LUC and LTC</p>
+      <p>Kritika Bhachawat · Roll No. 065087 · Group 76–90 — Focus: Conditions where EOQ beats LUC and LTC</p>
       <span class='tag' style='color:#86efac;'>Sensitivity Sliders</span>
       <span class='tag' style='color:#86efac;'>Live Cost Comparison</span>
       <span class='tag' style='color:#86efac;'>Breakeven Analysis</span>
@@ -895,7 +907,7 @@ with tab3:
 
         # Compute costs for EOQ, LUC, LTC with lab parameters
         lab_params = dict(
-            gr=lab_gr, sr_dict={}, bi=0, ss=0, lt=1,
+            gr=lab_gr, sr={}, bi=0, ss=0, lt=1,
             S=lab_S, uc=lab_uc, hpct=lab_h/100, mult=1
         )
         lab_res = {t: compute_mrp(**lab_params, tech=t) for t in ["EOQ","LUC","LTC"]}
@@ -967,7 +979,7 @@ with tab3:
             np.random.seed(42)
             raw_v = np.random.normal(base_mean, std_v, 6)
             gr_v  = [max(5, int(round(v/5)*5)) for v in raw_v]
-        sweep_p = dict(gr=gr_v, sr_dict={}, bi=0, ss=0, lt=1,
+        sweep_p = dict(gr=gr_v, sr={}, bi=0, ss=0, lt=1,
                        S=250, uc=120, hpct=0.20, mult=1)
         rr = {t: compute_mrp(**sweep_p, tech=t) for t in ["EOQ","LUC","LTC"]}
         sweep_rows.append({
