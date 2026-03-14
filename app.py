@@ -782,7 +782,7 @@ with tab3:
           </span>
         </div>""", unsafe_allow_html=True)
 
-        lab_params = dict(gr=lab_gr, sr={}, bi=0, ss=0, lt=1, S=lab_S, uc=lab_uc, hpct=lab_h/100, mult=1)
+        lab_params = dict(gr=lab_gr, sr_dict={}, bi=0, ss=0, lt=1, S=lab_S, uc=lab_uc, hpct=lab_h/100, mult=1)
         lab_res = {t: compute_mrp(**lab_params, tech=t) for t in ["EOQ","LUC","LTC"]}
 
         fig_lab = go.Figure()
@@ -833,7 +833,7 @@ with tab3:
             np.random.seed(42)
             raw_v = np.random.normal(base_mean, base_mean*cv_v, 6)
             gr_v  = [max(5, int(round(v/5)*5)) for v in raw_v]
-        sweep_p = dict(gr=gr_v, sr={}, bi=0, ss=0, lt=1, S=250, uc=120, hpct=0.20, mult=1)
+        sweep_p = dict(gr=gr_v, sr_dict={}, bi=0, ss=0, lt=1, S=250, uc=120, hpct=0.20, mult=1)
         rr = {t: compute_mrp(**sweep_p, tech=t) for t in ["EOQ","LUC","LTC"]}
         sweep_rows.append({"CV":round(cv_v,2),
             "EOQ":rr["EOQ"]["total_cost"],"LUC":rr["LUC"]["total_cost"],"LTC":rr["LTC"]["total_cost"]})
