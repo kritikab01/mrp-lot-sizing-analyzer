@@ -913,21 +913,31 @@ with tab3:
 
     st.markdown("---")
     st.markdown("### ✅ Summary: Conditions for EOQ Outperformance")
-    c1, c2, c3 = st.columns(3)
-    conditions = [
-        ("EOQ WINS WHEN", ["Demand CV < 0.10 (near-uniform)","Planning horizon > 12 periods",
-          "Costs accurately measured","Continuous demand flow","Simplicity is valued"], "#dbeafe","#1e40af"),
-        ("LUC WINS WHEN", ["Demand CV > 0.15 (lumpy)","High unit holding cost",
-          "Short horizons (3–8 periods)","Clear peaks and troughs","Minimising cost-per-unit matters"], "#fef3c7","#92400e"),
-        ("LTC WINS WHEN", ["HC ≈ S (similar magnitude)","Medium demand variability",
-          "Short-to-medium horizons","Balance of both cost types","Dynamic grouping beneficial"], "#fee2e2","#991b1b"),
+    sum_col1, sum_col2, sum_col3 = st.columns(3)
+    summary_conditions = [
+        ("EOQ WINS WHEN",
+         ["Demand CV &lt; 0.10 (near-uniform)", "Planning horizon &gt; 12 periods",
+          "Costs accurately measured", "Continuous demand flow", "Simplicity is valued"],
+         "#dbeafe", "#1e40af"),
+        ("LUC WINS WHEN",
+         ["Demand CV &gt; 0.15 (lumpy)", "High unit holding cost",
+          "Short horizons (3-8 periods)", "Clear peaks and troughs", "Minimising cost-per-unit matters"],
+         "#fef3c7", "#92400e"),
+        ("LTC WINS WHEN",
+         ["HC approx S (similar magnitude)", "Medium demand variability",
+          "Short-to-medium horizons", "Balance of both cost types", "Dynamic grouping beneficial"],
+         "#fee2e2", "#991b1b"),
     ]
-    for col, (title, points, bg, fc) in zip([c1,c2,c3], conditions):
-        items = "".join(f"<li>{p}</li>" for p in points)
-        col.markdown(f"""
-        <div style='background:{bg};border-left:4px solid {fc};border-radius:0 10px 10px 0;padding:16px 18px;'>
-          <div style='font-weight:700;color:{fc};font-size:13px;letter-spacing:0.5px;margin-bottom:10px;'>{title}</div>
-          <ul style='font-size:13px;color:#374151;margin:0;padding-left:18px;line-height:1.9;'>{items}</ul>
+    for sum_col, sum_item in zip([sum_col1, sum_col2, sum_col3], summary_conditions):
+        sum_title   = sum_item[0]
+        sum_bullets = sum_item[1]
+        sum_bg      = sum_item[2]
+        sum_fc      = sum_item[3]
+        sum_items   = "".join(f"<li>{str(pt)}</li>" for pt in sum_bullets)
+        sum_col.markdown(f"""
+        <div style='background:{sum_bg};border-left:4px solid {sum_fc};border-radius:0 10px 10px 0;padding:16px 18px;'>
+          <div style='font-weight:700;color:{sum_fc};font-size:13px;letter-spacing:0.5px;margin-bottom:10px;'>{sum_title}</div>
+          <ul style='font-size:13px;color:#374151;margin:0;padding-left:18px;line-height:1.9;'>{sum_items}</ul>
         </div>""", unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════
