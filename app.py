@@ -427,10 +427,9 @@ with st.sidebar:
 <div style='background:#020617;border:2px solid #38bdf8;border-radius:10px;
             padding:14px 16px;margin-top:10px;line-height:1.6;'>
   <div style='font-size:20px;font-weight:800;color:#ffffff;'>Kritika Bhachawat</div>
-  <div style='font-size:16px;color:#facc15;font-weight:600;'>Roll No: 065087</div>
-  <div style='font-size:15px;color:#38bdf8;font-weight:600;'>Course: Operation and Supply Chain Management</div>
-  <div style='font-size:15px;color:#4ade80;font-weight:600;'>Focus: EOQ outperforms LUC &amp; LTC</div>
+  <div style='font-size:15px;color:#38bdf8;font-weight:600;'>PGDM (Big Data Analytics)</div>
   <div style='font-size:15px;color:#c084fc;font-weight:600;'>FORE School of Management</div>
+  <div style='font-size:13px;color:#94a3b8;margin-top:6px;'>OSCM &middot; SAP-X1 Case Study</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -699,7 +698,7 @@ with tab3:
     st.markdown("""
     <div class='hero' style='background:linear-gradient(135deg,#1e3a1e 0%,#14532d 60%,#166534 100%);'>
       <h1>🔬 EOQ Outperformance Lab</h1>
-      <p>Kritika Bhachawat · Roll No. 065087 · Group 76–90 — Conditions where EOQ beats LUC and LTC</p>
+      <p>Under what conditions does EOQ beat LUC and LTC? Explore it live with the sliders below.</p>
       <span class='tag' style='color:#86efac;'>Sensitivity Sliders</span>
       <span class='tag' style='color:#86efac;'>Live Cost Comparison</span>
       <span class='tag' style='color:#86efac;'>Breakeven Analysis</span>
@@ -725,7 +724,7 @@ with tab3:
         st.dataframe(
             pivot_b.style
                    .format(lambda v: f"Rs.{v:,.2f}" if isinstance(v,(int,float)) and not isinstance(v,bool) else str(v))
-                   .applymap(hl_win, subset=["EOQ wins LUC?","EOQ wins LTC?"]),
+                   .map(hl_win, subset=["EOQ wins LUC?","EOQ wins LTC?"]),
             use_container_width=True)
         st.markdown("""
         <div class='insight-box'>
@@ -863,7 +862,7 @@ with tab3:
         if val == "✅ YES": return "background-color:#dcfce7;color:#166534;font-weight:700;"
         if val == "❌ NO":  return "background-color:#fee2e2;color:#991b1b;"
         return ""
-    st.dataframe(brkdf.style.applymap(hl_eoq, subset=["EOQ Outperforms?"])
+    st.dataframe(brkdf.style.map(hl_eoq, subset=["EOQ Outperforms?"])
                  .format({"EOQ Cost":"Rs.{:.2f}","LUC Cost":"Rs.{:.2f}","LTC Cost":"Rs.{:.2f}"}),
                  use_container_width=True, height=420)
 
@@ -877,6 +876,7 @@ with tab3:
 
     st.markdown("---")
     st.markdown("### 🏭 Practical Scenarios: When EOQ Outperforms in Real Business")
+    st.caption("Illustrative examples. CV values are indicative estimates from published patterns, not measured industry data.")
     scenarios = [
         ("🧼 FMCG / Retail Staples","A soap manufacturer ordering palm oil",
          "Demand: 50,000 litres/week — stable year-round. CV ≈ 0.03.",
